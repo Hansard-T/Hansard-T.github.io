@@ -3,6 +3,10 @@
   <entry>
     <title>Nirvana</title>
     <url>/2021/10/06/Nirvana/</url>
-    <content><![CDATA[<h1 id="Welcome-to-my-world"><a href="#Welcome-to-my-world" class="headerlink" title="Welcome to my world!"></a>Welcome to my world!</h1>]]></content>
+    <content><![CDATA[<p><font size=5><center>Welcome to my world!</center></font></p>
+]]></content>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
   </entry>
 </search>
